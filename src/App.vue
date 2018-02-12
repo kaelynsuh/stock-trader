@@ -1,12 +1,9 @@
-<template>
-  <div class="container">
-    <app-header></app-header>
-    <div class="row">
-      <div class="col-xs-12">
-        <router-view></router-view>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  .container
+    app-header
+    .row
+      .col
+        router-view
 </template>
 
 <script>
