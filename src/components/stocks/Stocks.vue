@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     .row
-      app-stock(v-for="stock in stocks")
+      app-stock(v-for="stock in stocks", :stock="stock")
 </template>
 
 <script>
