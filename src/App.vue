@@ -18,6 +18,6 @@
 
 <style>
   body {
-    padding: 30px;
+    padding: 2rem;
   }
 </style>
