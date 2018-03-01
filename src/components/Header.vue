@@ -1,5 +1,5 @@
 <template lang="pug">
-  nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-3
     router-link.navbar-brand(to='/') Stock Trader
 
     .collapse.navbar-collapse
