@@ -8,11 +8,12 @@
             .float-left
               input.form-control(type="number", 
                                 placeholder="Quantity", 
-                                v-model.number="quantity")
+                                v-model.number="quantity",
+                                :class="{danger: insufficientQuantity}")
             .float-right
               button.btn.btn-info(@click="sellStock", 
-                                    :disabled="quantity <= 0 || !Number.isInteger(quantity)") 
-                                    | Sell
+                                    :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)") 
+                                    | {{ insufficientQuantity ? 'Not enough' : 'Sell' }}
 </template>
 
 <script>
@@ -23,6 +24,11 @@
     data() {
       return {
         quantity: 0
+      }
+    },
+    computed: {
+      insufficientQuantity() {
+        return this.quantity > this.stock.quantity;
       }
     },
     methods: {
@@ -42,5 +48,8 @@
   }
 </script>
 
-<style>
+<style scoped>
+  .danger {
+    border: 1px solid red;
+  }
 </style>
