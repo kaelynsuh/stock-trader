@@ -17,7 +17,7 @@
           .dropdown-menu(aria-labelledby='navbarDropdown')
             a.dropdown-item(href='#') Save Data
             a.dropdown-item(href='#') Load Data
-        strong.navbar-text Funds: {{ funds }}
+        strong.navbar-text Funds: {{ funds | currency }}
 </template>
 
 <script>
