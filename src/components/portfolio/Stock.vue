@@ -1,7 +1,7 @@
 <template lang="pug">
   div.col-md-4.col-sm-6
       div.card.mb-3
-        .card-header.text-white.bg-success {{ stock.name }}
+        .card-header.text-white.bg-info {{ stock.name }}
           small  (Price: {{ stock.price }} | Quantity: {{ stock.quantity }})
         .card-body
           .card-text
@@ -10,7 +10,7 @@
                                 placeholder="Quantity", 
                                 v-model.number="quantity")
             .float-right
-              button.btn.btn-success(@click="sellStock", 
+              button.btn.btn-info(@click="sellStock", 
                                     :disabled="quantity <= 0 || !Number.isInteger(quantity)") 
                                     | Sell
 </template>
@@ -26,16 +26,17 @@
       }
     },
     methods: {
-      ...mapActions([
-        'sellStock'
-      ]),
+      ...mapActions({
+        placeSellOrder: 'sellStock'
+      }),
       sellStock() {
         const order = {
           stockId: this.stock.id,
           stockPrice: this.stock.price,
           quantity: this.quantity
         };
-        this.sellStock();
+        this.placeSellOrder(order);
+        this.quantity = 0;
       }
     }
   }
