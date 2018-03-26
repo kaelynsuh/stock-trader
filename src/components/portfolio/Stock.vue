@@ -4,16 +4,14 @@
         .card-header.text-white.bg-info {{ stock.name }}
           small  (Price: {{ stock.price }} | Quantity: {{ stock.quantity }})
         .card-body
-          .card-text
-            .float-left
-              input.form-control(type="number", 
-                                placeholder="Quantity", 
-                                v-model.number="quantity",
-                                :class="{danger: insufficientQuantity}")
-            .float-right
-              button.btn.btn-info(@click="sellStock", 
-                                    :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)") 
-                                    | {{ insufficientQuantity ? 'Not enough' : 'Sell' }}
+          .card-text.d-flex.justify-content-between
+            input.form-control.mr-2(type="number", 
+                              placeholder="Quantity", 
+                              v-model.number="quantity",
+                              :class="{danger: insufficientQuantity}")
+            button.btn.btn-info(@click="sellStock", 
+                                  :disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)") 
+                                  | {{ insufficientQuantity ? 'Not enough' : 'Sell' }}
 </template>
 
 <script>

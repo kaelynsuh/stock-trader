@@ -4,16 +4,14 @@
         .card-header.text-white.bg-success {{ stock.name }}
           small  (Price: {{ stock.price }})
         .card-body
-          .card-text
-            .float-left
-              input.form-control(type="number", 
-                                placeholder="Quantity", 
-                                v-model.number="quantity",
-                                :class="{danger: insufficientFunds}")
-            .float-right
-              button.btn.btn-success(@click="buyStock", 
-                                    :disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)") 
-                                    | {{ insufficientFunds ? 'Insufficient Funds' : 'Buy' }}
+          .card-text.d-flex.justify-content-between
+            input.form-control.mr-2(type="number", 
+                              placeholder="Quantity", 
+                              v-model.number="quantity",
+                              :class="{danger: insufficientFunds}")
+            button.btn.btn-success(@click="buyStock", 
+                                  :disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)") 
+                                  | {{ insufficientFunds ? 'Insufficient Funds' : 'Buy' }}
 </template>
 
 <script>
