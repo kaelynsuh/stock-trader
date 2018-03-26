@@ -15,8 +15,8 @@
         li.nav-item.dropdown
           a.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Save & Load
           .dropdown-menu(aria-labelledby='navbarDropdown')
-            a.dropdown-item(href='#') Save Data
             a.dropdown-item(href='#') Load Data
+            a.dropdown-item(href='#', @click="saveData") Save Data
         strong.navbar-text Funds: {{ funds | currency }}
 </template>
 
@@ -35,6 +35,15 @@
       ]),
       endDay() {
         this.randomizeStocks();
+      },
+      saveData() {
+        const data = {
+          funds: this.$store.getters.funds,
+          stockPortfolio: this.$store.getters.stockPortfolio,
+          stocks: this.$store.getters.stocks
+        };
+        this.$http.put('data.json', data);
+      },
       }
     }
   }
